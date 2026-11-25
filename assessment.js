@@ -14,14 +14,28 @@ assessmentButton.addEventListener(
 
     // 診断結果表示エリアの作成
     resultDivision.innerText = ``;// divタグを空文字で上書きすることで、空にしている
-    const heading = document.createElement(`h3`); // h3タグの作成
-    heading.innerText = `診断結果`;// タグの内側テキストを設定
-    resultDivision.appendChild(heading);//divタグの子要素として追加
 
-    const paragraph = document.createElement(`p`);//pタグの作成
+    // headerDivision の作成
+    const headerDivision = document.createElement(`div`);
+    headerDivision.setAttribute(`class`, `card-header text-bg-primary`);
+    headerDivision.innerText = `診断結果`;// タグの内側テキストを設定
+
+    // bodyDivision の作成
+    const bodyDivision = document.createElement(`div`);
+    bodyDivision.setAttribute(`class`, `card-body`);
+
+    const paragraph = document.createElement(`p`)
+    paragraph.setAttribute(`class`, `card-text`);
     const result = assessment(userName);//診断結果を作成
     paragraph.innerText = result;//pタグ内側のテキストを設定
-    resultDivision.appendChild(paragraph);//divタグの子要素としてpタグを追加
+    bodyDivision.appendChild(paragraph);//divタグの子要素としてpタグを追加
+
+    // resultDivision に Bootstrap のスタイルを適用する
+    resultDivision.setAttribute(`class` ,`card`);
+
+    // headerDivison と bodyDivison を resultDivison に差し込む  
+    resultDivision.appendChild(headerDivision);
+    resultDivision.appendChild(bodyDivision);
 
     // ツイートエリアの作成
     tweetDivision.innerText = ``;
